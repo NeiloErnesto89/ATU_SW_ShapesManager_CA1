@@ -1,4 +1,4 @@
-<h1 align="center">CA1 - Software Development: Java OOP
+<h1 align="center">CA1 - Software Development: Java OOP </h1>
 
 <h2 align="center">Shapes GUI </h2>
 
