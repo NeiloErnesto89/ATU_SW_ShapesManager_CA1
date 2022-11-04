@@ -26,19 +26,9 @@ public class BoundingBox  {
 //    }
 
     /* BB is a square around shape*/
-//    public BoundingBox(Color color, boolean filled, int xCenter, int yCenter) {
-//        super(color, filled, xCenter, yCenter);
-//    }
 
 
 
-    /* Derived BB from Points x, y*/
-
-//    public BoundingBox(Color color, boolean filled, int xCenter, int yCenter, Point bottomLeft, Point topRight) {
-//        super(color, filled, xCenter, yCenter);
-//        this.bottomLeft = bottomLeft;
-//        this.topRight = topRight;
-//    }
 
     /* getters & setters */
     public Point getBottomLeft() {
@@ -46,15 +36,6 @@ public class BoundingBox  {
         return bottomLeft;
     }
 
-//    public Point getBottomLeftasInt() {
-//
-//
-//        int x;
-//
-//        for (int x=0; x<bottomLeft.)
-
-//
-//    }
 
     public Point getTopRight () { return topRight; }
 

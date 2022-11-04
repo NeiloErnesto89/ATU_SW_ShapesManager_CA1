@@ -82,20 +82,29 @@ public abstract class Shape {
 //        System.out.println(boundingBox.getBoundingBox()); // make static
 
         /* Tester to check if I can access bottomLeft.x and check if output is correct */
-        Point pointX = boundingBox.getBottomLeft(); // looking for bottomLeft => if XCenter = 275 & radius = 150 -> (275 - (150/2)) = 275 - 75 = 200 (correct)
-        int x = pointX.getX();
-        System.out.println("this X point be: 200 (if XCenter = 275 and Radius is 150). Therefore X == "+ x);
-        Point pointY = boundingBox.getBottomLeft();
-        int y = pointY.getY();
-        System.out.println("this Y point should be: 375: "+ y); // if Y = 300 + (150/2) = 300+75 = 375
-//
+        Point bottomLeftPoint = boundingBox.getBottomLeft(); // looking for bottomLeft => if XCenter = 275 & radius = 150 -> (275 - (150/2)) = 275 - 75 = 200 (correct)
+        int bottomLeftX = bottomLeftPoint.getX();
+//        System.out.println("this X point be: 200 (if XCenter = 275 and Radius is 150). Therefore X == "+ bottomLeftX);
+        Point topRightPoint = boundingBox.getTopRight();
+        int topRightY = topRightPoint.getY();
+//        System.out.println("this Y point should be: 375: "+ topRightY); // if Y = 300 + (150/2) = 300-75 = 375
+        /* WE NEED TO RESOLVE BB DERIVED WIDTH AND HEIGHT */
+        int topRightX = topRightPoint.getX();
+        int bottomLeftY = bottomLeftPoint.getY();
+        System.out.println("(X1: "+ bottomLeftX + ", Y1: " + bottomLeftY + ")");
+        System.out.println("(X2: "+ topRightX + ", Y2: " + topRightY + ")");
 
+        int derivedWidth = topRightX - bottomLeftX; // X axis for width - x1 - x2 - 350 - 200 = 150 (width)
+        int derivedHeight = bottomLeftY - topRightY; // Y axis for height - y1 - y2 - 375 - 225 = 150 (height)
+        System.out.println(" Bottom Left X = " + bottomLeftX + ". Top Right Y = " + topRightY + " Top Right X = " + topRightX + " Bottom Left Y = " + bottomLeftY );
+        System.out.println("width= " + derivedWidth + " height: "+ derivedHeight);
+        g2d.drawRect(bottomLeftX, topRightY, derivedWidth, derivedHeight); // this works!
 
 
 //        Point x = boundingBox.getBottomLeft();
 //        System.out.println("this is x: "+ x);
 //        int pointX = this.boundingBox.getBottomLeft()[0];
-        g2d.drawRect(x, 80, 250, 80);
+//        g2d.drawRect(topRightX, bottomLeftY, 250, 80);
 //        g2d.drawRect();
     }
 

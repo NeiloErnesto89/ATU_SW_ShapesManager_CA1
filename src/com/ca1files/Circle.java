@@ -40,10 +40,10 @@ public class Circle extends Shape{
         this.boundingBox = new BoundingBox(
                     new Point(
                                 (xCenter - (radius/2)),
-                                (yCenter + (radius/2))),
+                                (yCenter + (radius/2))), //bottom left - (x1, y1)
                       new Point(
                               (xCenter + (radius/2)),
-                              (yCenter + (radius/2)))
+                              (yCenter - (radius/2))) // top right - (x2, y2)
                     );
 
 //        boundingBox = new BoundingBox(new Point(100, 100), new Point(60, 80));
