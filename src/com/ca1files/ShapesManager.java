@@ -43,8 +43,12 @@ public class ShapesManager {
             for (Shape shape : shapes) {
                 shape.drawShape(graphicsContext);
 
+                /* Class 5 - 1hr24 - if true, invoke graphics conext */
                 if (displayName) {
                     shape.drawName(graphicsContext);
+                }
+                if (displayBoundingBox) {
+                    shape.drawBoundingBox(graphicsContext);
                 }
             }
 
@@ -60,7 +64,26 @@ public class ShapesManager {
 
     }
 
-//    @Override
+    /* Class 5 - 1hr21m10 - get and set methods for boolean
+    * and we can enable/disable withing main()*/
+
+    public boolean isDisplayName() {
+        return displayName;
+    }
+
+    public void setDisplayName(boolean displayName) {
+        this.displayName = displayName;
+    }
+
+    public boolean isDisplayBoundingBox() {
+        return displayBoundingBox;
+    }
+
+    public void setDisplayBoundingBox(boolean displayBoundingBox) {
+        this.displayBoundingBox = displayBoundingBox;
+    }
+
+    //    @Override
 //    protected void paintComponent (Graphics g);
 
     // should have an ADDShape function to store objects to list

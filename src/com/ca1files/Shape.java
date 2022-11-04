@@ -57,7 +57,7 @@ public abstract class Shape {
     /* mouse click method */
     public boolean rightClick() {return false;}
 
-    /* BB method - takes graphics param as it's also a shape
+    /* BB method - takes graphics param and we call drawRect (as BB also just a shape)
     * each shape should have a BB */
     public void drawBoundingBox (Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
@@ -73,11 +73,29 @@ public abstract class Shape {
                 1.0f,
                 dash1,
                 2f);
+
         g2d.setStroke(bs1);
+
         /* here we must set BB dimensions via logical deduction
         * via marking scheme: Show each Shapes’s BoundingBox based on
         * a Boolean variable (initialised at compile-time)*/
-        g2d.drawLine(20, 80, 250, 80);
+//        System.out.println(boundingBox.getBoundingBox()); // make static
+
+        /* Tester to check if I can access bottomLeft.x and check if output is correct */
+        Point pointX = boundingBox.getBottomLeft(); // looking for bottomLeft => if XCenter = 275 & radius = 150 -> (275 - (150/2)) = 275 - 75 = 200 (correct)
+        int x = pointX.getX();
+        System.out.println("this X point be: 200 (if XCenter = 275 and Radius is 150). Therefore X == "+ x);
+        Point pointY = boundingBox.getBottomLeft();
+        int y = pointY.getY();
+        System.out.println("this Y point should be: 375: "+ y); // if Y = 300 + (150/2) = 300+75 = 375
+//
+
+
+
+//        Point x = boundingBox.getBottomLeft();
+//        System.out.println("this is x: "+ x);
+//        int pointX = this.boundingBox.getBottomLeft()[0];
+        g2d.drawRect(x, 80, 250, 80);
 //        g2d.drawRect();
     }
 
@@ -100,6 +118,7 @@ public abstract class Shape {
              System.out.println(ob1.getClass().getName()); // includes
             package information
         */
+        /* reflection -> info inside object at compile time */
         g.drawString(this.getClass().getSimpleName(),xCenter,yCenter);
     }
 

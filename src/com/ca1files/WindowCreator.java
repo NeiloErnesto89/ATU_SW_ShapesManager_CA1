@@ -7,11 +7,15 @@ import java.awt.*;
 
 public class WindowCreator {
     public static void buildWindow() {
-        Circle c1 = new Circle(Color.ORANGE, true, 280, 300, 150 );
-        guiTester.shapesManager.addShape(c1); // adding to shapes arrayList to be looped over
+        Circle c1 = new Circle(Color.ORANGE, true, 275, 300, 150 );
+
 
         Rectangle r1 = new Rectangle(Color.magenta, false, 200, 220, 80, 200 );
-        guiTester.shapesManager.addShape(r1);
+
+
+
+        guiTester.shapesManager.addShape(c1); // adding to shapes arrayList to be looped over
+//        guiTester.shapesManager.addShape(r1); // didn't incorporate BB for Rect so null pointer
     }
 //    public static void main(String[] args) {
 //

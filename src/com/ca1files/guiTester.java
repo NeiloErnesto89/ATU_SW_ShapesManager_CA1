@@ -26,6 +26,13 @@ public class guiTester {
         customWindow.setOpacity(1.0f);
         customWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
+        /* via ShapeManager class - access via setter methods
+        * for loop to check if set? */
+        shapesManager.setDisplayName(true);
+        shapesManager.setDisplayBoundingBox(true); //calling - BB in Circle test
+
+//        for (shapesManager shapes: shapes) {
+
 
         // here create new ShapesManager objects
         // try create Circle shape and add to mngr

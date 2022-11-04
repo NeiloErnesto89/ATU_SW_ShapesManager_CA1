@@ -3,7 +3,7 @@ package com.ca1files;
 import java.awt.*;
 
 /* Does BB extend shape or is technically a separate entity? */
-public class BoundingBox extends Shape {
+public class BoundingBox  {
 
     /* We use BB to determine via mouse clicks if we have clicked on
     * a shape or not */
@@ -12,28 +12,67 @@ public class BoundingBox extends Shape {
     private Point bottomLeft;
     private Point topRight;
 
-    /* BB is a square around shape*/
-    public BoundingBox(Color color, boolean filled, int xCenter, int yCenter) {
-        super(color, filled, xCenter, yCenter);
+    /* Main Constructor without extends via shape */
+
+    public BoundingBox(Point bottomLeft, Point topRight) {
+        this.bottomLeft = bottomLeft;
+        this.topRight = topRight;
     }
+
+    //    public BoundingBox(Point bottomLeft, Point topRight) {
+//        super(color, filled, xCenter, yCenter);
+//        this.bottomLeft = bottomLeft;
+//        this.topRight = topRight;
+//    }
+
+    /* BB is a square around shape*/
+//    public BoundingBox(Color color, boolean filled, int xCenter, int yCenter) {
+//        super(color, filled, xCenter, yCenter);
+//    }
 
 
 
     /* Derived BB from Points x, y*/
 
-    public BoundingBox(Color color, boolean filled, int xCenter, int yCenter, Point bottomLeft, Point topRight) {
-        super(color, filled, xCenter, yCenter);
+//    public BoundingBox(Color color, boolean filled, int xCenter, int yCenter, Point bottomLeft, Point topRight) {
+//        super(color, filled, xCenter, yCenter);
+//        this.bottomLeft = bottomLeft;
+//        this.topRight = topRight;
+//    }
+
+    /* getters & setters */
+    public Point getBottomLeft() {
+//        System.out.println("here we print the class to see what's in the point: " + bottomLeft);
+        return bottomLeft;
+    }
+
+//    public Point getBottomLeftasInt() {
+//
+//
+//        int x;
+//
+//        for (int x=0; x<bottomLeft.)
+
+//
+//    }
+
+    public Point getTopRight () { return topRight; }
+
+    public void setBottomLeft(Point bottomLeft) {
         this.bottomLeft = bottomLeft;
+    }
+
+    public void setTopRight(Point topRight) {
         this.topRight = topRight;
     }
 
-    public Point getBottomLeft () { return bottomLeft; }
+//    @Override
+//    public void drawShape(Graphics g) {
+//
+//    }
 
-    public Point getTopRight () { return topRight; }
-    @Override
-    public void drawShape(Graphics g) {
+    public void getBoundingBox() {}
 
-    }
 
     @Override
     public String toString() {

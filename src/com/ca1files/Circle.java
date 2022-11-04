@@ -11,6 +11,8 @@ public class Circle extends Shape{
     public Circle(Color color, boolean filled, int xCenter, int yCenter, int radius) {
         super(color, filled, xCenter, yCenter);
         this.radius = radius;
+        /* BB test */
+        setupBoundingBox(); // calls BB method below and displays if True
 
         /* use the radius to calculate the BB -> BB vid1 @ 3.53
         * eg. center = (5,8) .. x-4 and y+4  for bottomLeft == (1,12)
@@ -19,6 +21,36 @@ public class Circle extends Shape{
 //                            (yCenter+this.radius),
 //                            (xCenter+this.radius),
 //                            yCenter-this.radius));
+        /* here we create var of BB */
+//        this.boundingBox = new BoundingBox(
+//                new Point(
+//                                xCenter - (radius/2),
+//                                yCenter + (radius/2)), //(x1, y1)
+//                    new Point(
+//                                xCenter + (radius/2),
+//                                yCenter + (radius/2)) // (x2, y2)
+//                            );
+    }
+
+
+    /* had to remove extends Shape class as was incorrect
+    * how to check viability of BB if correct */
+    public void setupBoundingBox()
+    {
+        this.boundingBox = new BoundingBox(
+                    new Point(
+                                (xCenter - (radius/2)),
+                                (yCenter + (radius/2))),
+                      new Point(
+                              (xCenter + (radius/2)),
+                              (yCenter + (radius/2)))
+                    );
+
+//        boundingBox = new BoundingBox(new Point(100, 100), new Point(60, 80));
+    }
+
+    public BoundingBox getBoundingBox() {
+        return boundingBox;
     }
 
     @Override

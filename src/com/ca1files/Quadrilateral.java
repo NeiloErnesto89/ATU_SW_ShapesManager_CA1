@@ -4,13 +4,20 @@ package com.ca1files;
 
 import java.awt.*;
 
-public class Quadrilateral extends Shape {
+/* inherits from Shape so has a Center point
+* we will use it for rotation, so Quad class
+* also implements Rotatble Interface */
+public class Quadrilateral extends Shape implements Rotatable {
 
     private Point[] points;
 
     public Quadrilateral(Color color, boolean filled, int xCenter, int yCenter) {
         super(color, filled, xCenter, yCenter);
     }
+
+    /*looping over center points to devrive BB points
+    * (x1, y2) = smallest x & largest y
+    * (x2,y2) = largest x & largest y*/
 
 //    public Quadrilateral(Point centerPoint, Point[] points) {}
 //
@@ -37,4 +44,8 @@ public class Quadrilateral extends Shape {
     }
 
 
+    @Override
+    public void rotateNinetyDegrees(int angleDegrees) {
+        /* rotating quad obj upon click */
+    }
 }

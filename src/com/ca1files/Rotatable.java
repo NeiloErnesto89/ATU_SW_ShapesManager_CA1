@@ -2,7 +2,8 @@ package com.ca1files;
 
 /* */
 public interface Rotatable {
-    void rotate(int angleDegrees);
+    void rotateNinetyDegrees(int angleDegrees);
+
 }
 //public final class Consts {
 //    //Can easily change this value, recompile and test/observe
