@@ -9,18 +9,17 @@ public class WindowCreator {
     public static void buildWindow() {
         Circle c1 = new Circle(Color.ORANGE, true, 280, 300, 150 );
 
-        Circle c2 = new Circle(Color.PINK,true,100,120,150);
+        Circle c2 = new Circle(Color.PINK,true,300,280,150);
 
+        Rectangle r1 = new Rectangle(Color.green, true, 100, 200, 40, 200 );
 
-
-        Rectangle r1 = new Rectangle(Color.magenta, false, 200, 220, 80, 200 );
-
-
+        Square sq1 = new Square(Color.CYAN, true, 80, 50, 100, 100);
 
         guiTester.shapesManager.addShape(c1); // adding to shapes arrayList to be looped over
         guiTester.shapesManager.addShape(c2);
 
-//        guiTester.shapesManager.addShape(r1); // didn't incorporate BB for Rect so null pointer
+        guiTester.shapesManager.addShape(r1); // didn't incorporate BB for Rect so null pointer
+        guiTester.shapesManager.addShape(sq1);
     }
 //    public static void main(String[] args) {
 //

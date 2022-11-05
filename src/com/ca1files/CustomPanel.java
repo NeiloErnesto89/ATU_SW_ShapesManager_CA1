@@ -4,6 +4,8 @@ package com.ca1files;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 //import java.awt.event.MouseAdapter;
 //import java.awt.event.MouseEvent;
 //import java.util.ArrayList;
@@ -23,10 +25,55 @@ public class CustomPanel extends JPanel {
      * via that - we call ShapesManger.drawShapes()
      * we do this so Custom Panel can communicate with Shapes Manager  */
     ShapesManager shapesManager;
-
+    /* constructor sets up instance field and stores object away */
     public CustomPanel(ShapesManager shapesManger) {
         this.shapesManager = shapesManger;
+
+        /* Mouse Click Video  7m39
+         * MouseListener is interface
+         * MouseAdapter implements listener for us
+         * so we don't have to override
+         * Anon Class */
+        addMouseListener(new MouseAdapter() {
+            @Override
+            public void mousePressed(MouseEvent e) {
+                super.mousePressed(e);
+
+                System.out.println(e.toString());
+                /* capture mouse click X & Y Co-ords*/
+                int mouseX = e.getX();
+                int mouseY = e.getY();
+//                System.out.println(mouseX + " <---- X &&" + " Y ---> " + mouseY );
+
+                int button = e.getButton(); // left click == 1 & right click == 3
+//                int clickCount = e.getClickCount();
+//                System.out.println(button + " ________" + clickCount);
+
+                /* button check - 1 is left click & 3 is right */
+                boolean mouseCheck = false;
+                if (button == 1) {
+                    mouseCheck = shapesManger.leftClick(mouseX, mouseY); // bool method returns true
+                }
+                else if (button == 3)
+                {
+                    System.out.println("Right click pressed ");
+                }
+                else if (button == 2) {
+                    System.out.println("You have pressed the middle button! No functionality has been added here ..Yet!");
+                }
+
+                if (mouseCheck) { //if True
+                    /* here if left mouse clicker pressed && inside a shape
+                    * we invoke the repaint method */
+                    repaint();
+                }
+
+            }
+        });
     }
+//    {
+//
+//    }
 
     @Override
     protected void paintComponent(Graphics g) {

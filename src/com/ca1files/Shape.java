@@ -54,7 +54,14 @@ public abstract class Shape {
         this.filled = filled;
     }
 
-    /* mouse click method */
+    public void toggleFilled() {
+        filled =! filled; // not equal operator -
+
+    }
+
+    public boolean leftClick() {return false;}
+
+    /* right mouse click method */
     public boolean rightClick() {return false;}
 
     /* BB method - takes graphics param and we call drawRect (as BB also just a shape)
@@ -142,4 +149,6 @@ public abstract class Shape {
                 ", yCenter=" + yCenter +
                 '}';
     }
+
+
 }

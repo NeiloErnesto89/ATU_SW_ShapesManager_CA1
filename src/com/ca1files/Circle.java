@@ -63,6 +63,7 @@ public class Circle extends Shape{
         int pointX = xCenter - (radius / 2);
         int pointY = yCenter - (radius / 2);
         /* if true - can untoggle */
+
         if (filled) {
             g.fillOval(pointX, pointY, radius, radius);
         }

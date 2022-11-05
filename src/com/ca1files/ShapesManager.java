@@ -83,6 +83,42 @@ public class ShapesManager {
         this.displayBoundingBox = displayBoundingBox;
     }
 
+
+    /* leftClick is checking if left mouse click was inside a shape
+    * we return a bool depending on the outcome */
+    public boolean leftClick(int mouseX, int mouseY) {
+
+        boolean inBounds = false;
+
+        /* loop over shapes */
+        for (Shape shape : shapes) {
+//            System.out.println(shape);
+            Point bottomLeftCoOrds =shape.boundingBox.getBottomLeft();
+            Point topRightCoOrds =shape.boundingBox.getTopRight();
+            int xOne = bottomLeftCoOrds.getX(); // x1
+            int yOne = bottomLeftCoOrds.getY(); // y1
+            int xTwo = topRightCoOrds.getX(); // x2
+            int yTwo = topRightCoOrds.getY(); // y2
+
+//            System.out.println("mouse X: " + mouseX + " mouse Y: " + mouseY);
+//            System.out.println("X1: " + xOne + "  X2: " + xTwo);
+//            System.out.println("Y1: " + yOne + "  Y2: " + yTwo);
+
+            /* mouseClick >= x1 && MouseClick <= x2; -> basically we are checking if
+            * the Mouse Click has occured is in the shape. If so, we invoke
+            *  toggleFilled() method to flip between filled =! filled */
+            // if X Cord is greater than or equal to x1 and X Cord is less than or equal to x2
+            //  XMouse = 163 >= x1 (25) == True && xMouse 163 <= 175 == True &&
+            if ( (mouseX>=xOne && mouseX<=xTwo ) && (mouseY>=yTwo && mouseY<=yOne)) {
+
+                System.out.println("Yahhoo");
+                shape.toggleFilled();
+                inBounds = true;
+            }
+        }
+        return inBounds;
+    }
+
     //    @Override
 //    protected void paintComponent (Graphics g);
 
