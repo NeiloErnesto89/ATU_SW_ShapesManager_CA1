@@ -31,6 +31,10 @@ public class BoundingBox  {
         return this.topRight.getXPlusTen();
     }
 
+//    public Point quadBoundingBox(Point[] points) {
+//        return this.topRight = points[1] this.bottomLeft = points[3];
+//    }
+
 //    public int BBAddToTenBotLeft() {
 //        this.bottomLeft = bottomLeft;
 //

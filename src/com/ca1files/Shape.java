@@ -109,7 +109,6 @@ public abstract class Shape {
 
     }
 
-
     public void drawName(Graphics g) {
         g.setColor(Color.black);
         Font textFont = new Font("SansSerif", Font.ITALIC, 14);

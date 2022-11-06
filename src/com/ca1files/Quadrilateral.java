@@ -145,8 +145,10 @@ public class Quadrilateral extends Shape implements Rotatable {
         int quadWidth = rectangle.width;
         int quadHeight = rectangle.height;
 
-        Point rectCenter = new Point(rectangle.xCenter, rectangle.yCenter);
-        this.centerPoint = rectCenter;
+//        this.centerPoint = rectangle.getRectCenterPoint();
+
+//        Point rectCenter = new Point(rectangle.xCenter, rectangle.yCenter);
+//        this.centerPoint = rectCenter;
         /* getting the center of the rect for the rotation */
 //        if (rightClick()) {
 //            Point rCenter2 = new Point(rectangle.xCenter, rectangle.yCenter);
@@ -160,13 +162,28 @@ public class Quadrilateral extends Shape implements Rotatable {
         this.points[2] = new Point((quadX + quadWidth), (quadY + quadHeight)); // (x,y) top left
         this.points[3] = new Point((quadX - quadWidth), (quadY + quadHeight)); // (x,y) bottom left
 
-//        Point bottomLeft = this.points[3]; //bottom left
-//        Point topRight = this.points[1] ; // topRight
 
-        boundingBox = new BoundingBox(this.points[3], this.points[1]);
-
+        // this is working !
+        this.centerPoint = rectangle.getRectCenterPoint();
+//        System.out.println("this is the rectangle (quads) center point: " + centerPoint);
+//        this.boundingBox = new BoundingBox(this.points[3], this.points[1]);
+        setQuadBoundingBox(this.points);
 
     }
+
+//    public Quadrilateral(Rectangle rectangle)  {
+//        super(rectangle.getColor(), rectangle.getFilled(), rectangle.getRectCenterPoint().getX(), rectangle.getRectCenterPoint().getY(),);
+//        this.centerPoint = rectangle.getRectCenterPoint();
+//        this.points = rectangle.boundingBoxReset();
+//        this.boundingBox = new BoundingBox(this.points[3], this.points[1]);
+//        this.boundingBox = new BoundingBox(
+//                (new Point
+//                        ((xCenter-(width/2)), (yCenter+(height/2)))),
+//                new Point
+//                        ((xCenter+(width/2)),(yCenter-(height/2))));
+//        }
+
+
 
 
     @Override
@@ -243,8 +260,16 @@ public class Quadrilateral extends Shape implements Rotatable {
             float newX = centerPoint.getX() + xCenterDifference * cosTheta - yCenterDifference * sinTheta; //BEMDAS
             float newY = centerPoint.getY() + xCenterDifference * sinTheta + yCenterDifference * cosTheta;
 
-            point.setX((int) newX); // reset float to int
-            point.setY((int) newY);
+            int x = Math.round(newX);
+            int y = Math.round(newY);
+
+            point.setX(x);
+            point.setY(y);
+
+//            point.setX((int) newX); // reset float to int change type (truncate)
+//            point.setY((int) newY);
+
+
         }
 
 

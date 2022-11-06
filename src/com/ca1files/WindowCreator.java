@@ -36,9 +36,13 @@ public class WindowCreator {
         Quadrilateral q2 = new Quadrilateral(Color.RED,true, centerPoint2, p1, p2, p3, p4);
 
 
-        Rectangle r2 = new Rectangle(Color.white,true,380,60,40,50); // colour light or white and not filled
-        Quadrilateral q3 = new Quadrilateral(Color.yellow,true, r2); // color overrides from Rect
+//        Rectangle r2 = new Rectangle(Color.white,true,380,60,40,50); // colour light or white and not filled
+//        Quadrilateral q3 = new Quadrilateral(Color.yellow,true, r2); // color overrides from Rect
+//        Rectangle r2 = new Rectangle(Color.cyan,true,380,60,40,150);
+//        Quadrilateral q4 = new Quadrilateral(r2);
 
+        Rectangle rect2 = new Rectangle(Color.white,false,400,70,50,40);
+        Quadrilateral q44 = new Quadrilateral(Color.yellow,true, rect2);
 
 
         guiTester.shapesManager.addShape(c1); // adding to shapes arrayList to be looped over
@@ -47,8 +51,9 @@ public class WindowCreator {
         guiTester.shapesManager.addShape(r1); // didn't incorporate BB for Rect so null pointer
 //        guiTester.shapesManager.addShape(sq1);
         guiTester.shapesManager.addShape(q1);
-        guiTester.shapesManager.addShape(q2);
-        guiTester.shapesManager.addShape(q3);
+//        guiTester.shapesManager.addShape(q4);
+        guiTester.shapesManager.addShape(q44);
+//        guiTester.shapesManager.addShape(q3);
 //        guiTester.shapesManager.addShape(sq2);
     }
 //    public static void main(String[] args) {

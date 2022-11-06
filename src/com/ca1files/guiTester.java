@@ -5,7 +5,7 @@ import java.awt.*;
 //
 //import static java.awt.Color.red;
 
-/* Tester class -> create object */
+/* Gui Tester class -> create object */
 
 public class guiTester {
 
