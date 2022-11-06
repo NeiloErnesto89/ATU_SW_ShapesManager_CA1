@@ -34,11 +34,11 @@ public class Rectangle extends Shape implements Moveable {
     }
 
     /* top left & right, bottom right & left in order*/
-    public Point[] boundingBoxReset() {
-        return new Point[]{ new Point(xCenter-(width/2), yCenter-(width/2)),  new Point(xCenter-(width/2) + width, yCenter-(width/2)),
-                new Point((xCenter-(width/2)) + width, (yCenter-(height/2)) + height), new Point(xCenter-(width/2), (yCenter-(height/2)) + height),
-        };
-    }
+//    public Point[] boundingBoxReset() {
+//        return new Point[]{ new Point(xCenter-(width/2), yCenter-(width/2)),  new Point(xCenter-(width/2) + width, yCenter-(width/2)),
+//                new Point((xCenter-(width/2)) + width, (yCenter-(height/2)) + height), new Point(xCenter-(width/2), (yCenter-(height/2)) + height),
+//        };
+//    }
 
     public boolean getFilled(){
         return filled;

@@ -2,39 +2,37 @@ package com.ca1files;
 
 import java.awt.*;
 
-/* Does BB extend shape or is technically a separate entity? */
+/* Bounding Box class will create a box that surrounds the shapes.
+* The boundaries will be dotted and  used to detect mouse clicks within
+* a shape's bounding box and therefore, invoke a method() if needed */
+
 public class BoundingBox  {
 
-    /* We use BB to determine via mouse clicks if we have clicked on
-    * a shape or not */
-
-    /* 49m30 - subsumed */
-    private Point bottomLeft; // 06/11/22 - revert to private access mods as BB methods only using
+    /* BB is always a square, so we subsume that we just need the 2 Points (x,y)
+    * to derive the bounding box co-ords and therefore, to derive its size and position */
+    private Point bottomLeft;
     private Point topRight;
 
-    /* Main Constructor without extends via shape */
-    /* BB is a square around shape*/
-
+    /* Main Constructor */
     public BoundingBox(Point bottomLeft, Point topRight) {
         this.bottomLeft = bottomLeft;
         this.topRight = topRight;
     }
 
+    /* this method is used to return the bottom left co-ords +=10 (via Point class) - upon a left click on a Rect */
     public int BBAddTenToBottomLeftX() {
         this.bottomLeft = bottomLeft;
         return this.bottomLeft.getXPlusTen();
     }
 
+    /* this method is used to return the top right co-ords +=10 (via Point class) - upon a left click on a Rect */
     public int BBAddTenToTopRightX() {
         this.topRight = topRight;
 
         return this.topRight.getXPlusTen();
     }
 
-//    public Point quadBoundingBox(Point[] points) {
-//        return this.topRight = points[1] this.bottomLeft = points[3];
-//    }
-
+    /* unused and commented out code from earlier test */
 //    public int BBAddToTenBotLeft() {
 //        this.bottomLeft = bottomLeft;
 //
@@ -47,14 +45,16 @@ public class BoundingBox  {
 //        return this.topRight.x += 10;
 //    }
 
-    /* getters & setters */
+    /* getters & setters for bottom left and top right co-rds */
     public Point getBottomLeft() {
-//        System.out.println("here we print the class to see what's in the point: " + bottomLeft);
         return bottomLeft;
     }
 
-    public Point getTopRight () { return topRight; }
-//
+    public Point getTopRight () {
+        return topRight;
+    }
+
+    /* unused and commented out code for set points*/
 //    public void setBottomLeft(Point bottomLeft) {
 //        this.bottomLeft = bottomLeft;
 //    }
@@ -62,8 +62,7 @@ public class BoundingBox  {
 //    public void setTopRight(Point topRight) {
 //        this.topRight = topRight;
 //    }
-//
-//    public void getBoundingBox() {}
+
 
 
     @Override
