@@ -15,7 +15,7 @@ public class CustomWindow extends JFrame {
     public CustomWindow(ShapesManager shapesManager)
     {
         CustomPanel mainPanel = new CustomPanel(shapesManager); //CustomPanel type expecting shapesManager obj
-        /* adding the mainPanel obj with SM to the pane;*/
+        /* adding the mainPanel obj with SM to the Jframe obj (which is extended) */
         add(mainPanel, BorderLayout.CENTER);
 
     }

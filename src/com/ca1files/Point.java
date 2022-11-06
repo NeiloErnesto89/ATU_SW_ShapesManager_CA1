@@ -2,8 +2,7 @@ package com.ca1files;
 
 public class Point {
 
-    /* Point class  (class 3 - 49m10) to store x,y co-ords
-    * * issues with BB so removed private  */
+    /* Point class used to store x,y co-ords */
     private int x;
     private int y;
     
@@ -18,30 +17,29 @@ public class Point {
         this.y = y;
     }
 
-//    public Point(int i, int i1, int i2, int i3) {
-//    }
-
+    /*  get X int */
     public int getX() {
         return this.x;
     }
 
-    /* getter for MoveTenUnits method == move BB + Shape upon rightClick*/
-    public int getXPlusTen(){
-        return this.x +=10;
-    }
-//
-//    public int addTenToX() {return this.x + 10; }
-//
+    /*  get Y int */
     public int getY() {
         return this.y;
     }
-//
-//    public int addTenToY() {return this.y + 10; }
-//
+
+    /* important getter for MoveTenUnits method
+    * via BB class + Shape (Rect) upon leftClick */
+    public int getXPlusTen(){
+
+        return this.x +=10;
+    }
+
+    /*  set X int */
     public void setX(int x) {
         this.x = x;
     }
 
+    /*  set Y int */
     public void setY(int y) {
         this.y = y;
     }

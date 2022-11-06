@@ -5,65 +5,41 @@ import java.awt.*;
 //
 //import static java.awt.Color.red;
 
-/* Gui Tester class -> create object */
+/* Gui Tester class -> create test shape objects
+* via WindowCreator class */
 
 public class guiTester {
 
     /* global shapesManager object */
     static ShapesManager shapesManager = new ShapesManager();
 
-
     public static void main(String[] args) {
 
-        /* calling build method via WIndowCreator class which adds the test shapes to the SM list*/
-
+        /* calling build method via WIndowCreator class
+        * which contains shape obj and adds the test shapes to the SM list */
         WindowCreator.buildWindow();
 
         shapesManager.setDisplayName(true);
         shapesManager.setDisplayBoundingBox(true);
 
-//        Rectangle r1 = new Rectangle(Color.red,false,50,120,50,200);
-//
-//        shapesManager.addShape(r1);
 
-
-
-        /* passing SM in as param to new Custom Window object to set up Jframe */
-//        new CustomWindow(shapesManager);
+        /* passing SM in as arg to new Custom Window object to set up Jframe */
         CustomWindow customWindow = new CustomWindow(shapesManager);
+
+        /*  set windows width and height via Consts file */
         customWindow.setSize(Consts.FRAME_WIDTH, Consts.FRAME_HEIGHT);
+
+        /*  the title on the toolbar of frame (my name & student number) */
         customWindow.setTitle("CA1 Shapes: Neil Smyth (L00177606) ");
+
+        /*  window visibility = True */
         customWindow.setVisible(true);
+
+        /*  unused opacity setter */
 //        customWindow.setOpacity(1.0f);
+
+        /*  if user clicks 'X;, program stops and window closes down */
         customWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-        /* via ShapeManager class - access via setter methods
-        * for loop to check if set? */
-         //calling - BB in Circle test
-
-//        for (shapesManager shapes: shapes) {
-
-
-        // here create new ShapesManager objects
-        // try create Circle shape and add to mngr
-
-//        ShapesManager shapesList = new ShapesManager();
-//        shapesList.drawShapes(g);
-
-//        ShapesManager shapesManager = new ShapesManager();
-//        shapesManager.addShape(new Rectangle( red, true, 50, 50 , 20, 40));
-//
-//        shapesManager.drawShapes(null);
-
-        //finished this step class 3 @ 1h09m22
-
-
-        //Create our window and pass in our manager - ( configure our JFrame (window))
-//        CustomWindow customWindow = new CustomWindow();
-//        customWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        customWindow.setTitle("Test Window");
-//        customWindow.setVisible(true);
-
 
 
     }
