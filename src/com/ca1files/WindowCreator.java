@@ -10,8 +10,8 @@ public class WindowCreator {
     /* method is called in the Tester and builds the shapes on the GUI */
     public static void buildWindow() {
         /* creating circle objects */
-        Circle c1 = new Circle(Color.ORANGE, true, 250, 300, 140 );
-        Circle c2 = new Circle(Color.PINK,false,400,300,180);
+        Circle c1 = new Circle(Color.ORANGE, false, 250, 300, 140 );
+        Circle c2 = new Circle(Color.PINK,true,400,300,180);
 
         /* creating a rectangle object */
         Rectangle r1 = new Rectangle(Color.green, true, 150, 200, 120, 100 );
@@ -40,7 +40,7 @@ public class WindowCreator {
         points[1] = new Point(250,80); // bottomRight
         points[2] = new Point(250,190); // topRight
         points[3] = new Point(175,215); // bottomLeft
-        Quadrilateral q1 = new Quadrilateral(Color.ORANGE,false, cP1, points);
+        Quadrilateral q1 = new Quadrilateral(Color.ORANGE,true, cP1, points);
 
         /* creating Quadrilateral object via method 2 (passing in individual points) */
         Point cp2 = new Point(480, 320);
