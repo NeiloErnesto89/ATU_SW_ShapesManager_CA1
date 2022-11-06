@@ -45,7 +45,7 @@ public class Circle extends Shape{
     * a circle is filled or not (bool) and proceeds to display on the gui */
     @Override
     public void drawShape(Graphics g) {
-        System.out.println("Drawing a circle");
+//        System.out.println("Drawing a circle");
         g.setColor(color); // color passed in
         Graphics2D g2d = (Graphics2D) g;
         g2d.setStroke(new BasicStroke(1));

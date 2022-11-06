@@ -190,7 +190,7 @@ public class Quadrilateral extends Shape implements Rotatable {
     public void drawShape(Graphics g) {
         /* You should use the Graphics object’s drawPolygon() and fillPolygon() methods to render the quad. */
 
-        System.out.println(this.toString()); // the 'shapes' object - class 3-  1hr04m (just console)
+//        System.out.println(this.toString()); // the 'shapes' object - class 3-  1hr04m (just console)
         g.setColor(color);
         Graphics2D graphics2D = (Graphics2D) g;
         graphics2D.setStroke(new BasicStroke(1));

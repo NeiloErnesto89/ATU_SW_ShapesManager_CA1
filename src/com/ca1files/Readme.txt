@@ -1,10 +1,22 @@
 Please also provide a readme.txt file in your source directory. This should include the following:
-Name and/or student ID.
+
+
 Student Name: Neil Smyth
+
 Student ID: L00177606
-List of known bugs and/or omissions (leave blank if you don't know of any)
-Link to github repo (optional)
+
+List of known bugs and/or omissions (leave blank if you don't know of any):
+
+Link to github repo (optional): https://github.com/NeiloErnesto89/ATU_SW_ShapesManager_CA1
+
 Any other info that you might deem important.
+
+I didn't test (or add restraints) to constructing the shape objects, so I could put in a very large number which
+would probably make the program crash or just totally cover the screen. SO I would suggest adding a lot more exceptions
+and conditionals to catch any 'bad user' behaviour.
+
+I used a Const file to store immutable variables, but then I stored both the 'displayName' and 'displayBoundingBox' bool vars
+inside the ShapesManager class - it made sense at the time and I kept it.
 
 Manual Tests:
 
