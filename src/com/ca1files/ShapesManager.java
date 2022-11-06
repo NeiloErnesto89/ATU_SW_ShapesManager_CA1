@@ -37,32 +37,26 @@ public class ShapesManager {
         /* method will iterate (loop) over list  & call each shape's
         * drawShape() (which is the abstract method in Shapes class) */
 
-        /* if True */
-
             /* for loop iterates over list of shapes and draws */
+
+          /* enhanced for loop 1hr05m55 */
             for (Shape shape : shapes) {
                 shape.drawShape(graphicsContext);
 
+                /* check if BB is true */
+                if (displayBoundingBox)
+                    shape.drawBoundingBox(graphicsContext);
+
+
                 /* Class 5 - 1hr24 - if true, invoke graphics conext */
-                if (displayName) {
+                if (displayName)
                     shape.drawName(graphicsContext);
                 }
-                if (displayBoundingBox) {
-                    shape.drawBoundingBox(graphicsContext);
-                }
+
             }
 
-        /* enhanced for loop 1hr05m55 */
 
-//        for( Shape currShape:shapes ) {
-//            currShape.drawShape(null);
-//        }
-//        for (Shape currShape :
-//                shapes) {
-//            currShape.drawShapeConsole();
-//        }
 
-    }
 
     /* Class 5 - 1hr21m10 - get and set methods for boolean
     * and we can enable/disable withing main()*/
@@ -92,35 +86,82 @@ public class ShapesManager {
 
         /* loop over shapes */
         for (Shape shape : shapes) {
-//            System.out.println(shape);
+////            System.out.println(shape);
             Point bottomLeftCoOrds =shape.boundingBox.getBottomLeft();
             Point topRightCoOrds =shape.boundingBox.getTopRight();
             int xOne = bottomLeftCoOrds.getX(); // x1
             int yOne = bottomLeftCoOrds.getY(); // y1
             int xTwo = topRightCoOrds.getX(); // x2
             int yTwo = topRightCoOrds.getY(); // y2
-
-//            System.out.println("mouse X: " + mouseX + " mouse Y: " + mouseY);
-//            System.out.println("X1: " + xOne + "  X2: " + xTwo);
-//            System.out.println("Y1: " + yOne + "  Y2: " + yTwo);
-
-            /* mouseClick >= x1 && MouseClick <= x2; -> basically we are checking if
-            * the Mouse Click has occured is in the shape. If so, we invoke
-            *  toggleFilled() method to flip between filled =! filled */
-            // if X Cord is greater than or equal to x1 and X Cord is less than or equal to x2
-            //  XMouse = 163 >= x1 (25) == True && xMouse 163 <= 175 == True &&
+//
+//            /* mouseClick >= x1 && MouseClick <= x2; -> basically we are checking if
+//             * the Mouse Click has occured is in the shape. If so, we invoke
+//             *  toggleFilled() method to flip between filled =! filled */
+//            // if X Cord is greater than or equal to x1 and X Cord is less than or equal to x2
+//            //  XMouse = 163 >= x1 (25) == True && xMouse 163 <= 175 == True &&
             if ( (mouseX>=xOne && mouseX<=xTwo ) && (mouseY>=yTwo && mouseY<=yOne)) {
+//
+//                System.out.println("True - left click occured inside shape");
+//                shape.toggleFilled();
+//                inBounds = true;
 
-                System.out.println("Yahhoo");
+            /* testing access co-rds */
+
+//            Point bottomLeftPoints = shape.boundingBox.bottomLeft;
+//            Point topRightPoints = shape.boundingBox.topRight;
+//            if ( (mouseX>= bottomLeftPoints.x && mouseX<=topRightPoints.x ) && (mouseY>=topRightPoints.y && mouseY<=bottomLeftPoints.y)) {
+                System.out.println("True - left click occurred inside shape");
                 shape.toggleFilled();
                 inBounds = true;
             }
-        }
+
+
+
+            }
+
         return inBounds;
+    }
+
+    public boolean rightClick(int mouseX, int mouseY) {
+
+        boolean inBounds = false;
+
+        /* loop over shapes */
+        for (Shape shape : shapes) {
+//            System.out.println(shape);
+            Point bottomLeftCoOrds = shape.boundingBox.getBottomLeft();
+            Point topRightCoOrds = shape.boundingBox.getTopRight();
+            int xOne = bottomLeftCoOrds.getX(); // x1
+            int yOne = bottomLeftCoOrds.getY(); // y1
+            int xTwo = topRightCoOrds.getX(); // x2
+            int yTwo = topRightCoOrds.getY(); // y2
+//
+//
+//            /* mouseClick >= x1 && MouseClick <= x2; -> basically we are checking if
+//             * the Mouse Click has occured is in the shape. If so, we invoke
+//             *  toggleFilled() method to flip between filled =! filled */
+//            // if X Cord is greater than or equal to x1 and X Cord is less than or equal to x2
+//            //  XMouse = 163 >= x1 (25) == True && xMouse 163 <= 175 == True &&
+            if ( (mouseX>=xOne && mouseX<=xTwo ) && (mouseY>=yTwo && mouseY<=yOne)) {
+
+                /* testing access co-rds */
+//            Point bottomLeftPoints = shape.boundingBox.bottomLeft;
+//            Point topRightPoints = shape.boundingBox.topRight;
+//            if ( (mouseX>= bottomLeftPoints.x && mouseX<=topRightPoints.x ) && (mouseY>=topRightPoints.y && mouseY<=bottomLeftPoints.y)) {
+
+                System.out.println("True - right click occured inside shape");
+                /* here we invoke method associated with particular shape (move for rect/square or rotate for quad)  */
+                shape.rightClick();
+                inBounds = true;
+//                inBounds = shape.rightClick();
+                /* shape moves but bounding box stays - can only click on BB */
+            }
+        }
+        return inBounds; // returns bool - true or false to invoke method
+
     }
 
     //    @Override
 //    protected void paintComponent (Graphics g);
 
-    // should have an ADDShape function to store objects to list
 }

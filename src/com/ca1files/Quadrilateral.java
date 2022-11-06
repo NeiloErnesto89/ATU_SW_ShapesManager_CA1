@@ -9,12 +9,15 @@ import java.awt.*;
 * also implements Rotatble Interface */
 public class Quadrilateral extends Shape implements Rotatable {
 
-    private Point[] points;
+    private Point[] points = new Point[4]; // set Array to len 4
 
     public Quadrilateral(Color color, boolean filled, int xCenter, int yCenter) {
         super(color, filled, xCenter, yCenter);
     }
 
+//    public Quadrilateral(Point centerPoint, Point p1, Point p2, Point p3, Point p4) {
+
+//    }
     /*looping over center points to devrive BB points
     * (x1, y2) = smallest x & largest y
     * (x2,y2) = largest x & largest y*/

@@ -4,6 +4,7 @@ package com.ca1files;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 //import java.awt.event.MouseAdapter;
@@ -37,43 +38,55 @@ public class CustomPanel extends JPanel {
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
-                super.mousePressed(e);
+//                super.mousePressed(e);
 
                 System.out.println(e.toString());
                 /* capture mouse click X & Y Co-ords*/
                 int mouseX = e.getX();
                 int mouseY = e.getY();
-//                System.out.println(mouseX + " <---- X &&" + " Y ---> " + mouseY );
 
-                int button = e.getButton(); // left click == 1 & right click == 3
 //                int clickCount = e.getClickCount();
-//                System.out.println(button + " ________" + clickCount);
+
 
                 /* button check - 1 is left click & 3 is right */
-                boolean mouseCheck = false;
+                // via dermot mouse vid 2 - 15m00
+
+                /* via Dermot 15.00 - mouse click video 2 */
+
+                int modifier = e.getModifiersEx();
+
+//                if ((modifier & InputEvent.BUTTON1_DOWN_MASK) == InputEvent.BUTTON1_DOWN_MASK ) { // 1024
+//                    System.out.println("this is modifier: " + modifier + ". This is inputEvent.button1: " + InputEvent.BUTTON1_DOWN_MASK);
+//                }
+
+                int button = e.getButton(); // left click == 1 & right click == 3
+
+                boolean mouseCheck1 = false;
+                boolean mouseCheck3 = false;
                 if (button == 1) {
-                    mouseCheck = shapesManger.leftClick(mouseX, mouseY); // bool method returns true
+                    System.out.println("Right click pressed ");
+                    mouseCheck1 = shapesManger.leftClick(mouseX, mouseY); // bool method returns true
                 }
+
+
                 else if (button == 3)
                 {
                     System.out.println("Right click pressed ");
+                    mouseCheck3 = shapesManger.rightClick(mouseX, mouseY);
                 }
-                else if (button == 2) {
-                    System.out.println("You have pressed the middle button! No functionality has been added here ..Yet!");
-                }
+//                else if (button == 2) {
+//                    System.out.println("You have pressed the middle button! No functionality has been added here ..Yet!");
+//                }
 
-                if (mouseCheck) { //if True
+                if (mouseCheck1 || mouseCheck3) {//if True && True - logic AND gate
                     /* here if left mouse clicker pressed && inside a shape
-                    * we invoke the repaint method */
+                     * we invoke the repaint method */
                     repaint();
                 }
-
             }
         });
     }
-//    {
-//
-//    }
+
 
     @Override
     protected void paintComponent(Graphics g) {

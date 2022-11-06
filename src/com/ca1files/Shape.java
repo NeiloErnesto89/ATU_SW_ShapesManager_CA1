@@ -32,11 +32,8 @@ public abstract class Shape {
     }
 
 
-//    public Shape() {
-//        // default needed or overloaded consttructor in subclasses
-//
-//    }
-    //    https://github.com/DermoHiggs/SW_Development_Autumn2021/blob/master/src/sw_dev/inheritance/exercises/exercise2_2/Shape.java
+    /* provide (at least) the following abstract method(s) */
+    public abstract void drawShape (Graphics g);
 
     public Color getColor() {
         return color;
@@ -59,8 +56,6 @@ public abstract class Shape {
 
     }
 
-    public boolean leftClick() {return false;}
-
     /* right mouse click method */
     public boolean rightClick() {return false;}
 
@@ -68,12 +63,8 @@ public abstract class Shape {
     * each shape should have a BB */
     public void drawBoundingBox (Graphics g) {
         g.setColor(Color.LIGHT_GRAY);
-        /* via RoadMap notes -  */
-
         Graphics2D g2d = (Graphics2D) g;
-
         float[] dash1 = { 2f, 0f, 5f };
-//        g2d.drawLine(20, 40, 250, 40);
         BasicStroke bs1 = new BasicStroke(1,
                 BasicStroke.CAP_BUTT,
                 BasicStroke.JOIN_ROUND,
@@ -89,37 +80,35 @@ public abstract class Shape {
 //        System.out.println(boundingBox.getBoundingBox()); // make static
 
         /* Tester to check if I can access bottomLeft.x and check if output is correct */
+        // commented 06/11/22 - 13.04
         Point bottomLeftPoint = boundingBox.getBottomLeft(); // looking for bottomLeft => if XCenter = 275 & radius = 150 -> (275 - (150/2)) = 275 - 75 = 200 (correct)
         int bottomLeftX = bottomLeftPoint.getX();
-//        System.out.println("this X point be: 200 (if XCenter = 275 and Radius is 150). Therefore X == "+ bottomLeftX);
-        Point topRightPoint = boundingBox.getTopRight();
+
+        Point topRightPoint = boundingBox.getTopRight(); //System.out.println("this X point be: 200 (if XCenter = 275 and Radius is 150). Therefore X == "+ bottomLeftX);
         int topRightY = topRightPoint.getY();
-//        System.out.println("this Y point should be: 375: "+ topRightY); // if Y = 300 + (150/2) = 300-75 = 375
-        /* WE NEED TO RESOLVE BB DERIVED WIDTH AND HEIGHT */
+
         int topRightX = topRightPoint.getX();
         int bottomLeftY = bottomLeftPoint.getY();
-        System.out.println("(X1: "+ bottomLeftX + ", Y1: " + bottomLeftY + ")");
-        System.out.println("(X2: "+ topRightX + ", Y2: " + topRightY + ")");
 
+
+//        int botLeftX = .boundingBox.bottomLeft.getX();
+//        int tpRightY = boundingBox.topRight.getY();
+//        int tpRightX = boundingBox.topRight.getX();
+//        int botLeftY = boundingBox.bottomLeft.getY();
+
+//        System.out.println("BotleftX: " + botLeftX + ". TpRightY: " + tpRightY + ". TpRightX: " +  tpRightX +  ". BotLeftY: " +  botLeftY);
+
+//        System.out.println("(X1: "+ bottomLeftX + ", Y1: " + bottomLeftY + ")");
+//        System.out.println("(X2: "+ topRightX + ", Y2: " + topRightY + ")");
+//
         int derivedWidth = topRightX - bottomLeftX; // X axis for width - x1 - x2 - 350 - 200 = 150 (width)
         int derivedHeight = bottomLeftY - topRightY; // Y axis for height - y1 - y2 - 375 - 225 = 150 (height)
         System.out.println(" Bottom Left X = " + bottomLeftX + ". Top Right Y = " + topRightY + " Top Right X = " + topRightX + " Bottom Left Y = " + bottomLeftY );
         System.out.println("width= " + derivedWidth + " height: "+ derivedHeight);
         g2d.drawRect(bottomLeftX, topRightY, derivedWidth, derivedHeight); // this works!
 
-
-//        Point x = boundingBox.getBottomLeft();
-//        System.out.println("this is x: "+ x);
-//        int pointX = this.boundingBox.getBottomLeft()[0];
-//        g2d.drawRect(topRightX, bottomLeftY, 250, 80);
-//        g2d.drawRect();
     }
 
-
-
-    /* provide (at least) the following abstract method(s) */
-
-    public abstract void drawShape (Graphics g);
 
     public void drawName(Graphics g) {
         g.setColor(Color.black);

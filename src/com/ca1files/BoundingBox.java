@@ -9,26 +9,39 @@ public class BoundingBox  {
     * a shape or not */
 
     /* 49m30 - subsumed */
-    private Point bottomLeft;
+    private Point bottomLeft; // 06/11/22 - revert to private access mods as BB methods only using
     private Point topRight;
 
     /* Main Constructor without extends via shape */
+    /* BB is a square around shape*/
 
     public BoundingBox(Point bottomLeft, Point topRight) {
         this.bottomLeft = bottomLeft;
         this.topRight = topRight;
     }
 
-    //    public BoundingBox(Point bottomLeft, Point topRight) {
-//        super(color, filled, xCenter, yCenter);
+    public int BBAddTenToBottomLeftX() {
+        this.bottomLeft = bottomLeft;
+        return this.bottomLeft.getXPlusTen();
+    }
+
+    public int BBAddTenToTopRightX() {
+        this.topRight = topRight;
+
+        return this.topRight.getXPlusTen();
+    }
+
+//    public int BBAddToTenBotLeft() {
 //        this.bottomLeft = bottomLeft;
-//        this.topRight = topRight;
+//
+//        return this.bottomLeft.x += 10;
 //    }
-
-    /* BB is a square around shape*/
-
-
-
+//
+//    public int BBAddTenTopRightX() {
+//        this.topRight = topRight;
+//
+//        return this.topRight.x += 10;
+//    }
 
     /* getters & setters */
     public Point getBottomLeft() {
@@ -36,23 +49,17 @@ public class BoundingBox  {
         return bottomLeft;
     }
 
-
     public Point getTopRight () { return topRight; }
-
-    public void setBottomLeft(Point bottomLeft) {
-        this.bottomLeft = bottomLeft;
-    }
-
-    public void setTopRight(Point topRight) {
-        this.topRight = topRight;
-    }
-
-//    @Override
-//    public void drawShape(Graphics g) {
 //
+//    public void setBottomLeft(Point bottomLeft) {
+//        this.bottomLeft = bottomLeft;
 //    }
-
-    public void getBoundingBox() {}
+//
+//    public void setTopRight(Point topRight) {
+//        this.topRight = topRight;
+//    }
+//
+//    public void getBoundingBox() {}
 
 
     @Override

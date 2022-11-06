@@ -6,16 +6,17 @@ import java.awt.*;
 public class Rectangle extends Shape implements Moveable {
 
     /* private vars */
-    private int width;
-    private int height;
+    protected int width;
+    protected int height;
 
     public Rectangle(Color color, boolean filled, int xCenter, int yCenter, int width, int height) {
         super(color, filled, xCenter, yCenter);
         this.width = width;
         this.height = height;
-
-        setupBoundingBox();
 //        this.boundingBox = new BoundingBox(new Point(xCenter-(width/2),yCenter+(height/2)),new Point(xCenter+(width/2),yCenter-(height/2)));
+        /* DONT REMOVE INVOKE BB */
+        setupBoundingBox();
+
 //        this.boundingBox = new BoundingBox((new Point((xCenter-(width/2)),(yCenter+(height/2)))),new Point((xCenter+(width/2)),(yCenter-(height/2))));
 
     }
@@ -28,9 +29,9 @@ public class Rectangle extends Shape implements Moveable {
                                             ((xCenter+(width/2)),(yCenter-(height/2))));
     }
 
-    public BoundingBox getBoundingBox() {
-        return boundingBox;
-    }
+//    public BoundingBox getBoundingBox() {
+//        return boundingBox;
+//    }
 
     //    public Rectangle(int width, int height) {
 //        super();
@@ -61,6 +62,7 @@ public class Rectangle extends Shape implements Moveable {
         }
 
 
+    /* method invoked via right click - check shape right click override method */
     @Override
     public boolean rightClick() {
         /* calls the move10units method below */
@@ -69,19 +71,49 @@ public class Rectangle extends Shape implements Moveable {
 
     }
 
+   @Override
     public void moveTenUnits() {
-        /* shift 3 points x10 to the right -> */
-        Point bottomLeftPoint = boundingBox.getBottomLeft();
-        int bottomLeftX = bottomLeftPoint.getX();
 
-        bottomLeftX += 10; // bottom left x 10
+//         this was the error !!!
+       boundingBox.BBAddTenToBottomLeftX(); // OOP
+       boundingBox.BBAddTenToTopRightX();
+       xCenter += 10;
 
-        Point topRightPoint = boundingBox.getTopRight();
-        int topRightY = topRightPoint.getY();
+//        boundingBox.BBAddToTenBotLeft();
+//        boundingBox.BBAddTenTopRightX();
+//        xCenter += 10;
 
-        topRightY += 10;
+//        boundingBox.getBottomLeft().addTenToX();
+//        boundingBox.getTopRight().addTenToX();
+//       boundingBox.bottomLeft.addTenToY();
 
-        xCenter += 10;
+//       boundingBox.topRight.addTenToY();
+//       getBoundingBox().topRight.addTenToY();
+//       getBoundingBox().bottomLeft.addTenToX();
+//       xCenter += 10;
+
+        /* shift 3 x-points x10 to the right -> */
+       //access points
+//       boundingBox.bottomLeft.x += 10;
+//       Point bottomLeftPoint = boundingBox.getBottomLeft();
+//       int bottomLeftX = bottomLeftPoint.getX();
+//
+//       bottomLeftX += 10; // bottom left x 10
+//
+//
+//       Point topRightPoint = boundingBox.getTopRight();
+//       int topRightY = topRightPoint.getY();
+//
+//       topRightY += 10;
+//
+//       xCenter += 10;
+
+//       boundingBox.bottomLeft += 10;
+//       System.out.println("this is BB - bottom left: " + boundingBox.bottomLeft.x);
+//       boundingBox.topRight.x += 10;
+//       System.out.println("this is BB - top right: " + boundingBox.topRight.x);
+//       xCenter += 10;
+//       System.out.println("this is BB - xCenter: " + xCenter);
 
     }
 

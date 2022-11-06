@@ -1,6 +1,7 @@
 package com.ca1files;
 
 import javax.swing.*; // import all from Java swing
+import java.awt.*;
 //
 //import static java.awt.Color.red;
 
@@ -15,7 +16,17 @@ public class guiTester {
     public static void main(String[] args) {
 
         /* calling build method via WIndowCreator class which adds the test shapes to the SM list*/
+
         WindowCreator.buildWindow();
+
+        shapesManager.setDisplayName(true);
+        shapesManager.setDisplayBoundingBox(false);
+
+//        Rectangle r1 = new Rectangle(Color.red,false,50,120,50,200);
+//
+//        shapesManager.addShape(r1);
+
+
 
         /* passing SM in as param to new Custom Window object to set up Jframe */
 //        new CustomWindow(shapesManager);
@@ -23,13 +34,12 @@ public class guiTester {
         customWindow.setSize(Consts.FRAME_WIDTH, Consts.FRAME_HEIGHT);
         customWindow.setTitle("CA1 Shapes: Neil Smyth (L00177606) ");
         customWindow.setVisible(true);
-        customWindow.setOpacity(1.0f);
+//        customWindow.setOpacity(1.0f);
         customWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         /* via ShapeManager class - access via setter methods
         * for loop to check if set? */
-        shapesManager.setDisplayName(true);
-        shapesManager.setDisplayBoundingBox(true); //calling - BB in Circle test
+         //calling - BB in Circle test
 
 //        for (shapesManager shapes: shapes) {
 
