@@ -11,9 +11,50 @@ using the OOP principles via the Java programming language. We utilised Java Swi
 to visualise our code. The goal of the application is display, move and rotate different shapes that we have created.
 
 Starting with the concept of an abstract Shapes class, which the shapes themselves (Circle, Rect) inherited from, was
-a solid starting point to build the project and utilise OOP principles. As well as abstraction, we encountered Interfaces via Moveable and Rotation methods, 
-polymorphism, encapsulation and inheritance. I felt the project was a good learning curve. and I am pleased with the outcome.
+a solid starting point to build the project and utilise OOP principles. As well as abstraction, we encountered Interfaces via Moveable and Rotation methods,
+polymorphism, encapsulation and inheritance. I felt the project was a good learning curve and I am pleased with the outcome.Below are some examples:
+1. Abstraction
+```java
+public abstract class Shape
+```
+2. Encapsulation (e.g. access modifiers):
+```java
+protected boolean filled; //protected instance field so child classes can access
+```
+3. Inheritance (e.g. extends ):
+```java
+protected boolean filled; //protected instance field so child classes can acces
+// or also
+private int x; // cannot access from outside class unless there's a 'getter' for example
+```
+4. Polymorphism (e.g. overriding methods):
+```java
+ @Override
+    public void drawShape(Graphics g) {
+        g.drawRect(pointX, pointY, width, height);
+        }
+```
+5. Interfaces (Moveable and Rotation methods):
+```java
+public interface Rotatable {
+    void rotateNinetyDegrees();
+}
 
+// Implemented in a class (e.g Quadrilateral)
+
+public class Quadrilateral extends Shape implements Rotatable {
+    // whereby we are forced to override the implemenation
+
+    @Override
+    public void rotateNinetyDegrees() {
+        // code 
+    }
+    
+}
+
+
+
+```
 ### *Note for  Tester*
 
 *For the **testing purposes**, please refer to the guiTester.Java class which calls the WindowCreator.buildWindow();, which is where 
@@ -52,6 +93,8 @@ ATU Donegal Software Development Course Material
 
 ### Final Points
 
-Written by Neil Smyth (L00177606)
+Written by Neil Smyth (L00177606). 
+
+Thanks very much and please reach out if more information is needed.
 
 > NOTE: This project was created for educational purposes.
