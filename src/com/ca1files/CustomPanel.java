@@ -49,17 +49,15 @@ public class CustomPanel extends JPanel {
 
 
                 /* button check - 1 is left click & 3 is right */
-                // via dermot mouse vid 2 - 15m00
 
                 /* via Dermot 15.00 - mouse click video 2 */
 
-                int modifier = e.getModifiersEx();
-
+//                int modifier = e.getModifiersEx();
 //                if ((modifier & InputEvent.BUTTON1_DOWN_MASK) == InputEvent.BUTTON1_DOWN_MASK ) { // 1024
 //                    System.out.println("this is modifier: " + modifier + ". This is inputEvent.button1: " + InputEvent.BUTTON1_DOWN_MASK);
 //                }
 
-                int button = e.getButton(); // left click == 1 & right click == 3
+                int button = e.getButton(); // left click == 1 & right click == 3 (FYI: middle button == 2)
 
                 boolean mouseCheck1 = false;
                 boolean mouseCheck3 = false;

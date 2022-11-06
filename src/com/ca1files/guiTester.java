@@ -20,7 +20,7 @@ public class guiTester {
         WindowCreator.buildWindow();
 
         shapesManager.setDisplayName(true);
-        shapesManager.setDisplayBoundingBox(false);
+        shapesManager.setDisplayBoundingBox(true);
 
 //        Rectangle r1 = new Rectangle(Color.red,false,50,120,50,200);
 //
