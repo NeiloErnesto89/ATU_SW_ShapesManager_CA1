@@ -51,7 +51,7 @@ public class WindowCreator {
         guiTester.shapesManager.addShape(r1); // didn't incorporate BB for Rect so null pointer
 //        guiTester.shapesManager.addShape(sq1);
         guiTester.shapesManager.addShape(q1);
-//        guiTester.shapesManager.addShape(q4);
+        guiTester.shapesManager.addShape(q2);
         guiTester.shapesManager.addShape(q44);
 //        guiTester.shapesManager.addShape(q3);
 //        guiTester.shapesManager.addShape(sq2);
