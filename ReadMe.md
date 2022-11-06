@@ -12,7 +12,7 @@ to visualise our code. The goal of the application is display, move and rotate d
 
 Starting with the concept of an abstract Shapes class, which the shapes themselves (Circle, Rect) inherited from, was
 a solid starting point to build the project and utilise OOP principles. As well as abstraction, we encountered Interfaces via Moveable and Rotation methods,
-polymorphism, encapsulation and inheritance. I felt the project was a good learning curve and I am pleased with the outcome.Below are some examples:
+polymorphism, encapsulation and inheritance. I felt the project was a good learning curve and I am pleased with the outcome. Below are some examples of the OOP concepts used:
 1. Abstraction
 ```java
 public abstract class Shape
@@ -20,16 +20,19 @@ public abstract class Shape
 2. Encapsulation (e.g. access modifiers):
 ```java
 protected boolean filled; //protected instance field so child classes can access
+// or also
+private int x; // cannot access from outside class unless there's a 'getter' for example
+
+//with a public method 
+public void setupBoundingBox() {return true;}
 ```
 3. Inheritance (e.g. extends ):
 ```java
-protected boolean filled; //protected instance field so child classes can acces
-// or also
-private int x; // cannot access from outside class unless there's a 'getter' for example
+public class Circle extends Shape{} // Circle inherits from abstract Shape class
 ```
 4. Polymorphism (e.g. overriding methods):
 ```java
- @Override
+ @Override // annotation to show 'overriding'
     public void drawShape(Graphics g) {
         g.drawRect(pointX, pointY, width, height);
         }
@@ -41,7 +44,6 @@ public interface Rotatable {
 }
 
 // Implemented in a class (e.g Quadrilateral)
-
 public class Quadrilateral extends Shape implements Rotatable {
     // whereby we are forced to override the implemenation
 
@@ -57,8 +59,8 @@ public class Quadrilateral extends Shape implements Rotatable {
 ```
 ### *Note for  Tester*
 
-*For the **testing purposes**, please refer to the guiTester.Java class which calls the WindowCreator.buildWindow();, which is where 
-the test shape objects have been created and invoked via the addSHapes method to the shapeManager, which in turn adds them on the panel 
+*For the **testing purposes**, please refer to the guiTester.Java class which calls the WindowCreator.buildWindow() method, which is where 
+the test shape objects have been created and invoked via the addShapes() method to the shapeManager, which in turn adds them on the panel. See below for guiTester:
 ```java
 public class guiTester {
 
@@ -69,13 +71,22 @@ public class guiTester {
 
         WindowCreator.buildWindow();
     }
+
+    //  WindowCreator class
+public class WindowCreator {
+    /* method is called in the Tester and builds the shapes on the GUI */
+    public static void buildWindow() {
+        /* creating circle objects */
+        Circle c1 = new Circle(Color.ORANGE, false, 250, 300, 140 );
+        // adding to shapes arrayList to be looped over and draw on panel
+        guiTester.shapesManager.addShape(c1);
 ```
 
 
 ### GUI (Java Screen)
 
 See below for an image of how the render GUI looks (Java Swing). A User can toggle or un-toggle the filled colour of the shape, 
-by clicking the right mouse button. The user must click inside of the dotted bounding box to see the affects. If a user left-clicks the mouse
+by clicking the right mouse button. The user must click inside the dotted bounding box to see the affects. If a user left-clicks the mouse
 button, then, if it's a Rectangle shape, the shape will move by 10 units to the right. If the shape is a Quadrilateral, it will rotate on 
 it's center point by 90 degrees. Circles currently don't move (and rotation wouldn't be much use).
 
