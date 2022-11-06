@@ -1,14 +1,9 @@
 package com.ca1files;
 
-/* */
+/* Rotatable interface to be implemented in Quad (as it already inherits Shape) */
 public interface Rotatable {
-    void rotateNinetyDegrees(int angleDegrees);
+    void rotateNinetyDegrees(); // no need to pass in angle
 
 }
-//public final class Consts {
-//    //Can easily change this value, recompile and test/observe
-//    public static final int DEGREES_TO_ROTATE = 90;
-//    public static final int FRAME_WIDTH = 600;
-//    public static final int FRAME_HEIGHT = 400;
-//}
+
 

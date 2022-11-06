@@ -11,11 +11,14 @@ import java.util.ArrayList;
 public class Quadrilateral extends Shape implements Rotatable {
 
     private Point[] points = new Point[4]; // set Array to len 4
+    private Point centerPoint;
 
 
-    /* this constructor we pass in an arrayList to loop over and assign points depending on conditions */
-    public Quadrilateral(Color color, boolean filled, Point centerPoint, Point[] pointsList) {
+    /* this constructor we pass in an arrayList to loop over and assign points depending on conditions
+    * --> public Quadrilateral(Point centerPoint, Point[] points) {} etc. */
+    public Quadrilateral(Color color, boolean filled,  Point centerPoint, Point[] pointsList) {
         super(color, filled, centerPoint.getX(), centerPoint.getY());
+        this.centerPoint = centerPoint;
 
         /* vars for 4 points of quad */
         Point topLeftPoint = new Point();
@@ -58,11 +61,11 @@ public class Quadrilateral extends Shape implements Rotatable {
 
     }
 
-
-    /* Constructor for Quad specific 4 points - centerpoint(x,y) - extracted via getters */
+    /* Constructor for Quad specific 4 points - centerPoint(x,y) - extracted via getters */
 
     public Quadrilateral(Color color, boolean filled, Point centerPoint, Point point1, Point point2, Point point3, Point point4) {
         super(color, filled, centerPoint.getX(), centerPoint.getY());
+        this.centerPoint = centerPoint;
 
         /* vars for 4 points of quad */
         Point topLeftPoint = new Point();
@@ -78,7 +81,7 @@ public class Quadrilateral extends Shape implements Rotatable {
             System.out.println("these are the vertex: "+ vertex);
 
         }
-
+        /* assigning vertexList vars via index e.g. topLeft point = (x: 300, y: 200) */
         topLeftPoint = vertexList[0];
         topRightPoint = vertexList[1];
         bottomLeftPoint = vertexList[2];
@@ -93,10 +96,12 @@ public class Quadrilateral extends Shape implements Rotatable {
         setQuadBoundingBox(this.points);
 
     }
-
+    /* looping over center points to derive BB points
+     * (x1, y2) = smallest x & largest y
+     * (x2,y2) = largest x & largest y */
     private void setQuadBoundingBox(Point[] points) {
-        /* here we find the mix-max for (x,y) co-ords*/
-        int minX = points[0].getX(); // getter for X
+        /* here we find the mix-max for (x,y) co-ords so we can set the BB*/
+        int minX = points[0].getX(); // getter for X min
         int maxX = points[1].getX();
         int minY = points[2].getY();
         int maxY = points[3].getY();
@@ -123,25 +128,46 @@ public class Quadrilateral extends Shape implements Rotatable {
             Point bottomLeft = new Point(minX,maxY);
             Point topRight = new Point(maxX,minY);
 
-            /* invoke new BB and assign to object with new co-ords*/
+            /* invoke new BB and assign to object with new co-ords*
+            * like a Rect around quad*/
             this.boundingBox = new BoundingBox(bottomLeft,topRight);
 
         }
 
     }
 
+    /* constructor/ method to create a polygon/quad using a Rect obj class */
+    public Quadrilateral(Color color, boolean filled, Rectangle rectangle) {
+        super(color, filled, rectangle.xCenter, rectangle.yCenter); //rectangle.height, rectangle.width - just 4 in constructor
+        /* accessing attributes/co-ords etc. via inheritance */
+        int quadX = rectangle.xCenter;
+        int quadY = rectangle.yCenter;
+        int quadWidth = rectangle.width;
+        int quadHeight = rectangle.height;
+
+        Point rectCenter = new Point(rectangle.xCenter, rectangle.yCenter);
+        this.centerPoint = rectCenter;
+        /* getting the center of the rect for the rotation */
+//        if (rightClick()) {
+//            Point rCenter2 = new Point(rectangle.xCenter, rectangle.yCenter);
+//            this.centerPoint = rCenter2;
+//        }
+        /* calculate x,y co-ords to derive quad vertex using center x&y points
+        * width along X-axis, height along Y-axis */
+
+        this.points[0] = new Point((quadX - quadWidth), (quadY - quadHeight)); // (x,y) bottom right
+        this.points[1] = new Point((quadX + quadWidth), (quadY - quadHeight)); // (x,y) top right
+        this.points[2] = new Point((quadX + quadWidth), (quadY + quadHeight)); // (x,y) top left
+        this.points[3] = new Point((quadX - quadWidth), (quadY + quadHeight)); // (x,y) bottom left
+
+//        Point bottomLeft = this.points[3]; //bottom left
+//        Point topRight = this.points[1] ; // topRight
+
+        boundingBox = new BoundingBox(this.points[3], this.points[1]);
 
 
+    }
 
-    /*looping over center points to devrive BB points
-    * (x1, y2) = smallest x & largest y
-    * (x2,y2) = largest x & largest y*/
-
-//    public Quadrilateral(Point centerPoint, Point[] points) {}
-//
-
-//
-//    public Quadrilateral(Rectangle rectangle) {}
 
     @Override
     public void drawShape(Graphics g) {
@@ -183,9 +209,46 @@ public class Quadrilateral extends Shape implements Rotatable {
                 '}';
     }
 
+    @Override
+    public boolean rightClick() {
+        rotateNinetyDegrees();
+        return true;
+    }
 
     @Override
-    public void rotateNinetyDegrees(int angleDegrees) {
+    public void rotateNinetyDegrees() {
         /* rotating quad obj upon click */
+
+        int angle = Consts.ROTATION_ANGLE; // change to alter rotational change
+
+        /* via Dermot - 'Java methods accept the angle as a parameter in Radians!'
+        * so we invoke .toRadians method below */
+
+        float radians = (float) Math.toRadians(angle); //
+        System.out.println(radians); // 90 degree == 1.57 radians
+//        System.out.println(Math.toRadians());
+        float cosTheta = (float) Math.cos(radians); // -4.37..
+        float sinTheta = (float) Math.sin(radians); // 1.0
+
+        System.out.println("CosSine == " + cosTheta);
+        System.out.println("sinTheta == " + sinTheta);
+
+
+        /* loop over points (x,y) and derive new points via formula (Theta = 0)
+        * x` = Xcos0 - Ysin0 & y` = Xsin0 + Ycos0
+        * New X value: CenterX + (diff between X points) * cos0 - (dif between y points) * sin0 */
+        for (Point point: points) {
+            int xCenterDifference = point.getX() - centerPoint.getX() ;
+            int yCenterDifference = point.getY() - centerPoint.getY();
+            float newX = centerPoint.getX() + xCenterDifference * cosTheta - yCenterDifference * sinTheta; //BEMDAS
+            float newY = centerPoint.getY() + xCenterDifference * sinTheta + yCenterDifference * cosTheta;
+
+            point.setX((int) newX); // reset float to int
+            point.setY((int) newY);
+        }
+
+
+
     }
+
 }

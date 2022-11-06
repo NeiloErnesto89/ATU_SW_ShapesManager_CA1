@@ -49,7 +49,7 @@ public class Rectangle extends Shape implements Moveable {
         /* 02/11/22 -> offset center x & y to get actual shape */
         int pointX = (xCenter - (width/2)); // so if X = 200 and width = 80- > 200 - (80/2) = 160 (offsetting center)
         int pointY = (yCenter - (height/2)); // height is on Y axis, to find center point
-        System.out.println("this is point x (should be 160): " + pointX + ". This should be point y (120): " + pointY);
+//        System.out.println("this is point x (should be 160): " + pointX + ". This should be point y (120): " + pointY);
 
         /* check if filled (via mouse click toggle) */
         if (filled) {

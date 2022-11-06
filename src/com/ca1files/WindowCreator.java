@@ -15,13 +15,17 @@ public class WindowCreator {
 
         Square sq1 = new Square(Color.CYAN, true, 110, 150, 100); // error as we height + width should always be the same
 
+        //        Square sq2 = new Square(Color.red, true, 150, 240, 80, 80 );
+
+//        Square sq2 = new Square(Color.RED, true, 150,240, 80);
+
 
         Point centerPoint1 = new Point(230,150);
         Point[] points = new Point[4];
-        points[0] = new Point(200,100);
-        points[1] = new Point(260,90);
-        points[2] = new Point(260,200);
-        points[3] = new Point(190,210);
+        points[0] = new Point(200,100); //topLeft
+        points[1] = new Point(260,90); // bottomRight
+        points[2] = new Point(260,200); // topRight
+        points[3] = new Point(190,210); // bottomLeft
         Quadrilateral q1 = new Quadrilateral(Color.green,true, centerPoint1, points);
 
         Point centerPoint2 = new Point(480, 320);
@@ -32,9 +36,10 @@ public class WindowCreator {
         Quadrilateral q2 = new Quadrilateral(Color.RED,true, centerPoint2, p1, p2, p3, p4);
 
 
-//        Square sq2 = new Square(Color.red, true, 150, 240, 80, 80 );
+        Rectangle r2 = new Rectangle(Color.white,true,380,60,40,50); // colour light or white and not filled
+        Quadrilateral q3 = new Quadrilateral(Color.yellow,true, r2); // color overrides from Rect
 
-//        Square sq2 = new Square(Color.RED, true, 150,240, 80);
+
 
         guiTester.shapesManager.addShape(c1); // adding to shapes arrayList to be looped over
         guiTester.shapesManager.addShape(c2);
@@ -43,6 +48,7 @@ public class WindowCreator {
 //        guiTester.shapesManager.addShape(sq1);
         guiTester.shapesManager.addShape(q1);
         guiTester.shapesManager.addShape(q2);
+        guiTester.shapesManager.addShape(q3);
 //        guiTester.shapesManager.addShape(sq2);
     }
 //    public static void main(String[] args) {

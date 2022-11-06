@@ -103,8 +103,8 @@ public abstract class Shape {
 //
         int derivedWidth = topRightX - bottomLeftX; // X axis for width - x1 - x2 - 350 - 200 = 150 (width)
         int derivedHeight = bottomLeftY - topRightY; // Y axis for height - y1 - y2 - 375 - 225 = 150 (height)
-        System.out.println(" Bottom Left X = " + bottomLeftX + ". Top Right Y = " + topRightY + " Top Right X = " + topRightX + " Bottom Left Y = " + bottomLeftY );
-        System.out.println("width= " + derivedWidth + " height: "+ derivedHeight);
+//        System.out.println(" Bottom Left X = " + bottomLeftX + ". Top Right Y = " + topRightY + " Top Right X = " + topRightX + " Bottom Left Y = " + bottomLeftY );
+//        System.out.println("width= " + derivedWidth + " height: "+ derivedHeight);
         g2d.drawRect(bottomLeftX, topRightY, derivedWidth, derivedHeight); // this works!
 
     }
